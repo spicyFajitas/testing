@@ -1,17 +1,18 @@
 Netbox Docker
 =============
-Ansible role to configure Netbox as a docker-compose project.
 
+Ansible role to configure Netbox as a docker-compose project.
 
 Installation
 ------------
+
 Install this role with Ansible Galaxy:
 
 `ansible-galaxy install git+https://github.com/wastrachan/ansible-role-netbox-docker.git`
 
-
 Local Installation
 ------------------
+
 If you'd like to include this role directly in a playbook, set your [`roles_path`](https://docs.ansible.com/ansible/latest/reference_appendices/galaxy.html#roles-path) to `./roles` via environment variable or `ansible.cfg`.
 
 Then, add this role to your playbook's `requirements.yml`:
@@ -26,14 +27,14 @@ And finally, install the role with Ansible Galaxy:
 
 `ansible-galaxy install -r requirements.yml`
 
-
 Requirements
 ------------
-`docker` and `docker-compose` must be available and installed on the target system.
 
+`docker` and `docker-compose` must be available and installed on the target system.
 
 Role Variables
 --------------
+
 Configuration and installation options are made available as variables. Some of these (`secret_key`, passwords) _must_ be overridden before use!
 
 | Option                                        | Default                          | Description
@@ -90,21 +91,22 @@ Configuration and installation options are made available as variables. Some of 
 | `netbox_webhooks_enabled`                     | `true`                           | If true, enable netbox webhooks functionality
 | `netbox_extra_config`                         | -                                | If provided, this string will be rendered in [`config/extra.py`](https://github.com/netbox-community/netbox-docker/blob/release/configuration/extra.py)
 
-
 Example Playbook
 ----------------
+
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
         - netbox-docker
 
-
 Traefik/nginx-proxy Support
 ---------------------------
+
 This playbook can be used with [traefik](https://hub.docker.com/_/traefik) or jwilder's [nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy) by adding labels with `netbox_container_labels`, or environment variables with `netbox_container_env`, respectively. Additionally, `netbox_proxy_network_name` will attach the netbox service to an additional network, as traefik/nginx-proxy usually reside in a network other than that created by docker-compose projects. While not a complete guide to these services, your configuration may look like the below:
 
 #### traefik
+
 ```yaml
 netbox_port: null
 netbox_proxy_network_name: 'default'
@@ -115,6 +117,7 @@ netbox_container_labels:
 ```
 
 #### nginx-proxy
+
 ```yaml
 netbox_port: null
 netbox_proxy_network_name: 'default'
@@ -123,7 +126,7 @@ netbox_container_env:
   VIRTUAL_PORT: "8080"
 ```
 
-
 License
 -------
+
 This project itself is licensed under the terms of the [MIT License](LICENSE). View [license information](https://github.com/netbox-community/netbox/blob/develop/LICENSE.txt) for software contained within.
