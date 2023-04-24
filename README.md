@@ -4,4 +4,4 @@ This is a repo for testing my devops code before shipping it to my "production" 
 
 ## Ansible Playbooks
 
-Run an ansible playbook using the command `
+To test on a local machine, run the playbook using the command `ansible-playbook --connection=local server-playbook.yml -i 127.0.0.1`
