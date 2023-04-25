@@ -38,3 +38,8 @@
     - netbox.env
     - configuration/configuration.py
     - configuration/gunicorn_config.py
+
+- name: Ensure services are running
+  community.docker.docker_compose:
+    project_src: "{{ netbox_base_dir }}"
+    state: present
