@@ -1,25 +1,5 @@
 ---
 
-- name: Get current netbox version
-  docker_container:
-    name: "{{ netbox_image }}"
-    command: /bin/bash -c 'echo $VERSION'
-  register: current_version
-  changed_when: false
-
-- name: Check for netbox updates
-  docker_image_info:
-    name: "{{ netbox_image }}"
-  register: image_info
-  changed_when: false
-
-- name: Pull latest netbox image if available
-  community.docker.docker_compose:
-    project_src: "{{ netbox_base_dir }}"
-    pull: yes
-  when: image_info.exists and image_info.tag != current_version.stdout.strip()
-
-
 - name: Update netbox directories
   ansible.builtin.file:
     path: "{{ netbox_base_dir }}/{{ item }}"
@@ -62,4 +42,5 @@
 - name: Ensure services are running
   community.docker.docker_compose:
     project_src: "{{ netbox_base_dir }}"
-    state: present
+    pull: True
+  notify: Ensure Netbox is running HANDLER
