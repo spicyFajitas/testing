@@ -1,55 +1,55 @@
 ---
-netbox_base_dir: /opt/netbox
-netbox_port: 8080
+base_dir: /opt/netbox
+port: 8080
 
-netbox_netbox_image: netboxcommunity/netbox:v3.4.8
-#netbox_netbox_image: netboxcommunity/netbox:latest
-netbox_redis_image: redis:7-alpine
-netbox_postgres_image: postgres:14-alpine
+netbox_image: netboxcommunity/netbox:v3.4.8
+#netbox_image: netboxcommunity/netbox:latest
+redis_image: redis:7-alpine
+postgres_image: postgres:14-alpine
 
-netbox_admin_api_token: ''
-netbox_admin_email: "{{ netbox_admin_email }}"
-netbox_admin_password: "{{ netbox_admin_password }}"
-netbox_admin_username: admin
-netbox_allowed_hosts: '*'
-netbox_container_env: []
-netbox_container_labels: []
-netbox_cors_origin_allow_all: true
-netbox_cors_origin_whitelist: http://localhost
-netbox_default_page_size: 250
-netbox_email_certfile: ''
-netbox_email_from: netbox@bar.com
-netbox_email_keyfile: ''
-netbox_email_password: ''
-netbox_email_port: 25
-netbox_email_server: localhost
-netbox_email_timeout: 5
-netbox_email_use_ssl: false
-netbox_email_use_tls: false
-netbox_email_username: netbox
-netbox_enforce_global_unique: false
-netbox_graphql_enabled: true
-netbox_housekeeping_interval: 86400
-netbox_login_required: false
-netbox_max_page_size: 1000
-netbox_metrics_enabled: false
-netbox_napalm_password: ''
-netbox_napalm_timeout: 10
-netbox_napalm_username: ''
-netbox_pg_db: netbox
-netbox_pg_host: postgres
-netbox_pg_password: "{{ netbox_pg_password }}"
-netbox_pg_user: netbox
-netbox_proxy_network_name: ''
-netbox_redis_cache_host: redis-cache
-netbox_redis_cache_insecure_skip_tls_verify: false
-netbox_redis_cache_password: "{{ netbox_redis_cache_password }}"
-netbox_redis_cache_ssl: false
-netbox_redis_host: redis
-netbox_redis_insecure_skip_tls_verify: false
-netbox_redis_password: "{{ netbox_redis_password }}"
-netbox_secret_key: "{{ netbox_secret_key }}"
-netbox_skip_startup_scripts: false
-netbox_skip_superuser: false
-netbox_webhooks_enabled: true
-netbox_extra_config: ''
+admin_api_token: ''
+admin_email: "{{ netbox_admin_email }}"
+admin_password: "{{ netbox_admin_password }}"
+admin_username: admin
+allowed_hosts: '*'
+container_env: []
+container_labels: []
+cors_origin_allow_all: true
+cors_origin_whitelist: http://localhost
+default_page_size: 250
+email_certfile: ''
+email_from: netbox@bar.com
+email_keyfile: ''
+email_password: ''
+email_port: 25
+email_server: localhost
+email_timeout: 5
+email_use_ssl: false
+email_use_tls: false
+email_username: netbox
+enforce_global_unique: false
+graphql_enabled: true
+housekeeping_interval: 86400
+login_required: false
+max_page_size: 1000
+metrics_enabled: false
+napalm_password: ''
+napalm_timeout: 10
+napalm_username: ''
+pg_db: netbox
+pg_host: postgres
+pg_password: "{{ netbox_pg_password }}"
+pg_user: netbox
+proxy_network_name: ''
+redis_cache_host: redis-cache
+redis_cache_insecure_skip_tls_verify: false
+redis_cache_password: "{{ netbox_redis_cache_password }}"
+redis_cache_ssl: false
+redis_host: redis
+redis_insecure_skip_tls_verify: false
+redis_password: "{{ netbox_redis_password }}"
+secret_key: "{{ netbox_secret_key }}"
+skip_startup_scripts: false
+skip_superuser: false
+webhooks_enabled: true
+extra_config: ''
