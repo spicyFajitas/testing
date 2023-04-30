@@ -1,5 +1,10 @@
 ---
 
+- name: Install docker-compose
+  ansible.builtin.pip:
+    name: docker-compose
+    virtualenv: /opt/netbox/venv
+
 - name: Update netbox directories
   ansible.builtin.file:
     path: "{{ netbox_base_dir }}/{{ item }}"
