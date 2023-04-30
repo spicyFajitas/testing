@@ -1,6 +1,6 @@
 ---
 
-- name: Ensure Netbox is running HANDLER
+- name: Restart Netbox
   community.docker.docker_compose:
     project_src: "{{ netbox_base_dir }}"
     present: true
