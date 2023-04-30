@@ -4,3 +4,5 @@
   become_method: sudo
   roles:
     - servers/netbox
+  vars_files:
+    - servers/netbox/vaults/production.yml
