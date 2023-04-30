@@ -1,6 +1,6 @@
 ---
 base_dir: /opt/netbox
-port: 8080
+netbox_port: 8080
 
 netbox_image: netboxcommunity/netbox:v3.4.8
 #netbox_image: netboxcommunity/netbox:latest

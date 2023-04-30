@@ -5,7 +5,7 @@
 version: '3.4'
 services:
   netbox: &netbox
-    image: {{ netbox_netbox_image }}
+    image: {{ netbox_image }}
     depends_on:
       - postgres
       - redis
@@ -28,13 +28,13 @@ services:
       - "8080"
     {% endif %}
     restart: unless-stopped
-    {% if netbox_container_labels %}
+    {% if container_labels %}
     labels:
-      {{ netbox_container_labels | to_nice_yaml | indent(6) }}
+      {{ container_labels | to_nice_yaml | indent(6) }}
     {% endif %}
     networks:
       - default
-    {% if netbox_proxy_network_name %}
+    {% if proxy_network_name %}
       - proxy
     {% endif %}
 
@@ -66,7 +66,7 @@ services:
       - /opt/netbox/housekeeping.sh
 
   postgres:
-    image: {{ netbox_postgres_image }}
+    image: {{ postgres_image }}
     env_file: env/postgres.env
     volumes:
       - netbox-postgres-data:/var/lib/postgresql/data
@@ -75,7 +75,7 @@ services:
     restart: unless-stopped
 
   redis:
-    image: {{ netbox_redis_image }}
+    image: {{ redis_image }}
     command:
       - sh
       - -c # this is to evaluate the $REDIS_PASSWORD from the env
@@ -88,7 +88,7 @@ services:
     restart: unless-stopped
 
   redis-cache:
-    image: {{ netbox_redis_image }}
+    image: {{ redis_image }}
     command:
       - sh
       - -c # this is to evaluate the $REDIS_PASSWORD from the env
@@ -106,9 +106,9 @@ volumes:
   netbox-redis-data:
     driver: local
 
-{% if netbox_proxy_network_name %}
+{% if proxy_network_name %}
 networks:
   proxy:
     external:
-      name: {{ netbox_proxy_network_name }}
+      name: {{ proxy_network_name }}
 {% endif %}
