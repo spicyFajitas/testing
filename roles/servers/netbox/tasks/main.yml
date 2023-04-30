@@ -6,7 +6,7 @@
 
 - name: Update netbox directories
   ansible.builtin.file:
-    path: "{{ netbox_base_dir }}/{{ item }}"
+    path: "{{ base_dir }}/{{ item }}"
     state: directory
     recurse: true
   loop:
@@ -15,7 +15,7 @@
 - name: Update environment files
   ansible.builtin.template:
     src: "env/{{ item }}.j2"
-    dest: "{{ netbox_base_dir }}/env/{{ item }}"
+    dest: "{{ base_dir }}/env/{{ item }}"
     mode: "0644"
   loop:
     - netbox.env
@@ -27,7 +27,7 @@
 - name: Update configuration files
   ansible.builtin.template:
     src: "{{ item }}.j2"
-    dest: "{{ netbox_base_dir }}/{{ item }}"
+    dest: "{{ base_dir }}/{{ item }}"
     mode: "0644"
   loop:
     - docker-compose.yml
@@ -36,7 +36,7 @@
 
 - name: Remove outdated files
   ansible.builtin.file:
-    path: "{{ netbox_base_dir }}/{{ item }}"
+    path: "{{ base_dir }}/{{ item }}"
     state: absent
   loop:
     - netbox.env
@@ -45,6 +45,6 @@
 
 - name: Ensure services are running
   community.docker.docker_compose:
-    project_src: "{{ netbox_base_dir }}"
+    project_src: "{{ base_dir }}"
     pull: True
   notify: Restart netbox
