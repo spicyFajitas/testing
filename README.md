@@ -9,3 +9,5 @@ If something has disappeared from this repo, it either made the cut and is now i
 ## Ansible Playbooks
 
 To test on a local machine, run the playbook using the command `ansible-playbook --connection=local server-playbook.yml -i 127.0.0.1`
+
+To run the playbook on the remote machine, run using the command `ansible-playbook server-xyxplay.yml -i inventory/inventory.yml --vault-password-file roles/servers/xyzserver/vault-pass.txt`
