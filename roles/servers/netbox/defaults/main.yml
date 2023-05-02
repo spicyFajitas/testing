@@ -50,6 +50,6 @@ redis_insecure_skip_tls_verify: false
 redis_password: "{{ netbox_redis_password }}"
 secret_key: "{{ netbox_secret_key }}"
 skip_startup_scripts: false
-skip_superuser: false
+skip_superuser: true
 webhooks_enabled: true
 extra_config: ''
