@@ -18,7 +18,7 @@
 
 ## Overview
 
-This is a role to deploy Netbox inside a docker container. The deployment is mostly automated - the super user needs to be created manually afterwards. 
+This is a role to deploy Netbox inside a docker container. The deployment is mostly automated - the super user needs to be created manually afterwards.
 
 Easter egg: message me on Discord if you found this (I'll know you read my readme! How exciting)
 
@@ -42,7 +42,7 @@ You will also need to look through the playbook and change any variables accordi
 
 ### Main Installation
 
-Run `ansible-playbook server-netbox.yml -i inventory/inventory.yml --vault-password-file location/of/your/vault-password-file.txt` from your ansible controller. This will get the container mostly set up. 
+Run `ansible-playbook server-netbox.yml -i inventory/inventory.yml --vault-password-file location/of/your/vault-password-file.txt` from your ansible controller. This will get the container mostly set up.
 
 After the playbook runs successfully, run the command `docker compose exec netbox /opt/netbox/netbox/manage.py createsuperuser` in order to create a superuser.
 
