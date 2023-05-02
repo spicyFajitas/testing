@@ -1,4 +1,4 @@
-# KinD Testing Repo
+# Testing Repo
 
 ## Overview
 
